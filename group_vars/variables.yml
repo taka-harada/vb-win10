@@ -1,0 +1,14 @@
+---
+ansible_user: "IEUser"
+ansible_password: "Passw0rd!"
+
+# ansible_port=5986
+ansible_connection: "winrm"
+ansible_winrm_server_cert_validation: ignore
+# http_proxy=[proxyserver]
+# https_proxy=[proxyserver]
+# no_proxy=192.168.50.100
+
+# ホストマシン、ゲストマシンそれぞれ mkcert -CAROOT で表示されるルート証明書ディレクトリのパスに変更
+hosts_mkcert_dir: '/Users/taka/Library/Application Support/mkcert'
+guest_mkcert_dir: 'C:\Users\IEUser\AppData\Local'

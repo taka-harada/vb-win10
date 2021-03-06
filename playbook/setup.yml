@@ -1,0 +1,39 @@
+- hosts: windows
+  vars_files:
+    - ../group_vars/variables.yml
+  tasks:
+  - name: Install chocolatey
+    win_chocolatey:
+      name: chocolatey
+      state: present
+  - name: Install vim
+    win_chocolatey:
+      name: vim
+      state:  present
+  - name: Install Chrome
+    win_chocolatey:
+      name: googlechrome
+      state: present
+  - name: Install mkcert
+    win_chocolatey:
+      name: mkcert
+  - name: Set custom hosts file
+    win_template:
+      src: templates/custom_hosts.j2
+      dest: 'C:\Windows\System32\drivers\etc\hosts'
+  - name: Copy local Certificate file to Windows VM
+    win_copy:
+      remote_scr: yes
+      src: "{{ hosts_mkcert_dir }}"
+      dest: "{{ guest_mkcert_dir }}"
+  # ホストマシンからコピーした証明書をWindows VM側で再認証するために "mkcert --install" を実行する必要があるが、ダイアログのyes/no制御がansibleでうまくいかない
+  # - name: Create CA in Windows VM 
+  #   win_command: mkcert --install
+  #   become: yes
+  #   become_method: runas
+  #   become_user: SYSTEM
+  #   register: result
+    # ignore_error: true
+  # - name: debug result var
+  #   debug:  var=result
+    # raw: powershell.exe "C:\> mkcert --install"

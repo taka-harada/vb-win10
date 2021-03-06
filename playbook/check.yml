@@ -1,0 +1,5 @@
+- hosts: windows
+  vars_files:
+    - ../group_vars/variables.yml
+  tasks:
+    - action: win_ping
