@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     vb.name = "vagrant-win10"
     vb.memory = 2048
     vb.cpus = 2
-    # vb.gui = true
+    vb.gui = true #起動した時にGUIも立ち上げる
     vb.customize ["modifyvm", :id, "--vram", "256"]
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     vb.customize ["modifyvm", :id, "--usb", "on"]
