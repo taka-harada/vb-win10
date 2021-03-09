@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "win10"
+  config.vm.box = "vm-win10"
 
   config.vm.guest = "windows"
   config.vm.communicator= "winrm"
